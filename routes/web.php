@@ -15,3 +15,4 @@ use App\Http\Controllers\UsuarioController;
 
 Route::get('/', [UsuarioController::class, "home"]);
 
+Route::post('/cadastrar', [UsuarioController::class, "cadastrar"]);
