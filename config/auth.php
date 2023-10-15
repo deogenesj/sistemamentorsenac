@@ -62,7 +62,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Usuario::class, //temos que mudar para o nosso model "Usuario"
+            'table' => 'usuarios' //Associar a tabela usuarios com o model Usuario
         ],
 
         // 'users' => [

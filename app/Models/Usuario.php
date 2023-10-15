@@ -43,4 +43,12 @@ class Usuario extends Authenticatable
         'email_verified_at' => 'datetime',
         'senha' => 'hashed',
     ];
+
+    //Função para sobreescrever a forma do laravel autenticar a senha. 
+    //Laravel usa "password" por padrão. Mas na nossa tabela o campo chama "senha"
+    //Esse método associa o "password" do laravel com o nosso "senha"
+    public function getAuthPassword(){  
+        return $this->senha;
+    }
+
 }

@@ -8,24 +8,35 @@
 </head>
 <body>
     <h1>Sistema Mentor</h1>
-
-    <div>
+    @auth <!-- @ auth testa se há uma sessão, ou seja, se está logado.
+        Caso estiver, não mostrar o form de logar -->
+        <h2>Bem vindo! Você está logado!</h2>
+        <form action="/logout" method="POST">
+            @csrf
+            <button>Sign Out</button>
+        </form>
+    @else
         <h2>Faça seu login: </h2>
         <form action="/logar" method="POST">
-            <div>
-                <div>
-                    <input name="loginnome" type="text" placeholder="nome" autocomplete="off">
-                </div>
-                <div>
-                    <input name="loginpassword" type="password" placeholder="senha" autocomplete="off">
-                </div>
-                <div>
-                    <button>Logar</button>
-                </div>
-            </div>
+            @csrf
+
+            <input name="login" type="text" placeholder="email@mail.com">
+            <!-- Para a função de login do laravel funcionar, 
+                o nome do campo da senha deve ser "password" -->
+            <input name="password" type="password" placeholder="digite sua senha">
+
+            <button>Logar</button>
+
         </form>
-    </div>
-    
+    @endauth
+
+    @if (session()->has('success'))
+        {{session('success')}}
+    @endif
+
+    @if (session()->has('failure'))
+        {{session('failure')}}
+    @endif
 
     <div>
         <h2>Faça seu Cadastro</h2>
@@ -67,10 +78,6 @@
             
         </form>
     </div>
-    
-    <p>{{$ano}}</p>
-
-    <p>{{$exemplo}}</p>
 
 </body>
 </html>

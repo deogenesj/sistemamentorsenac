@@ -16,3 +16,6 @@ use App\Http\Controllers\UsuarioController;
 Route::get('/', [UsuarioController::class, "home"]);
 
 Route::post('/cadastrar', [UsuarioController::class, "cadastrar"]);
+Route::post('/logar', [UsuarioController::class, "logar"]);
+Route::post('/logout', [UsuarioController::class, 'logout']);
+
